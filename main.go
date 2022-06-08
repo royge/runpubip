@@ -21,14 +21,6 @@ func main() {
 		fmt.Fprint(w, ip)
 	})
 
-	// Health and readiness check routes.
-	r.HandleFunc("/healthy", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	})
-	r.HandleFunc("/ready", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	})
-
 	errs := make(chan error)
 	go func() {
 		c := make(chan os.Signal, 1)
